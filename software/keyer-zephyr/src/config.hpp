@@ -12,7 +12,10 @@ namespace morse
 
         [[nodiscard]] constexpr uint32_t DotDurationMs() const noexcept
         {
-            return 1200 / wpm_;
+            constexpr auto kParisWordInDits = 50UL;
+            constexpr auto kMsInSecond = 1000UL;
+            constexpr auto kMsInMinute = kMsInSecond * 60UL;
+            return kMsInMinute / (wpm_ * kParisWordInDits);
         }
         [[nodiscard]] constexpr uint32_t FrequencyHz() const noexcept
         {
