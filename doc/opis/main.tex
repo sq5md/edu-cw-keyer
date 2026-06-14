@@ -1,0 +1,46 @@
+\documentclass[12pt,a4paper]{article}
+
+% --- Kodowanie i język ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+
+% --- Marginesy A4 ---
+\usepackage[a4paper,margin=2.5cm]{geometry}
+
+% --- Grafika ---
+\usepackage{graphicx}
+
+% --- Matematyka ---
+\usepackage{amsmath, amssymb}
+
+% --- Linki ---
+\usepackage{hyperref}
+
+% --- Wcięcia i odstępy ---
+\usepackage{parskip}
+
+% --- Nagłówek i stopka ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Opis kodu Morse’a}
+\rhead{\leftmark}
+\cfoot{\thepage}
+
+% --- Tytuł ---
+\title{Opis kodu Morse’a}
+\author{SP5YAM}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+% --- Sekcje ---
+\input{sections/content.tex}
+
+\end{document}
