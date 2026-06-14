@@ -1,0 +1,61 @@
+/ {
+	chosen {
+		zephyr,console = &cdc_acm_uart0;
+		zephyr,shell-uart = &cdc_acm_uart0;
+	};
+
+	aliases {
+		led0 = &board_led;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		board_led: led_0 {
+			gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>;
+			label = "Onboard LED";
+		};
+		buzzer_gen: buzzer_gen {
+			gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+			label = "Buzzer with gen";
+		};
+	
+	};
+
+	// Klucz iambic (kropka / kreska)
+	morse_key {
+		compatible = "gpio-keys";
+		dot_button: button_0 {
+			gpios = <&gpio0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Morse Dot";
+		};
+		dash_button: button_1 {
+			gpios = <&gpio0 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "Morse Dash";
+		};
+	};
+
+	// Wyjście na głośnik (PWM)
+	buzzer {
+		compatible = "pwm-leds";
+		pwm_buzzer: buzzer_pwm {
+			pwms = <&pwm 0 PWM_HZ(600) PWM_POLARITY_NORMAL>;
+			label = "Keyer Buzzer";
+		};
+	};
+};
+
+&pwm {
+	status = "okay";
+};
+
+&zephyr_udc0 {
+	cdc_acm_uart0: cdc_acm_uart0 {
+		compatible = "zephyr,cdc-acm-uart";
+		label = "CDC_ACM_0"; // CLI
+	};
+
+	cdc_acm_uart1: cdc_acm_uart1 {
+		compatible = "zephyr,cdc-acm-uart";
+		label = "CDC_ACM_1"; // Decoder
+	};
+};
