@@ -42,10 +42,28 @@
 			label = "Keyer Buzzer";
 		};
 	};
+
+
 };
+
+&pinctrl {
+
+	pwm_ch0a_default: pwm_ch0a_default {
+		group1 {
+			pinmux = <PWM_0A_P0>;
+		};
+	};
+};
+
 
 &pwm {
 	status = "okay";
+	pinctrl-0 = <&pwm_ch0a_default>;
+	pinctrl-names = "default";
+};
+
+&uart0 {
+	status = "disabled";
 };
 
 &zephyr_udc0 {

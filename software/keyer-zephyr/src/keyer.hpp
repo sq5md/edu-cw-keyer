@@ -11,11 +11,11 @@ namespace morse
     class Keyer
     {
       public:
-        Keyer(const pwm_dt_spec& buzzer,
-              const gpio_dt_spec& dotPin,
-              const gpio_dt_spec& dashPin,
-              const gpio_dt_spec& ledPin,
-              const gpio_dt_spec& buzzerGenPin,
+        Keyer(const pwm_dt_spec buzzer,
+              const gpio_dt_spec dotPin,
+              const gpio_dt_spec dashPin,
+              const gpio_dt_spec ledPin,
+              const gpio_dt_spec buzzerGenPin,
               const device* outputUart)
             : buzzer_{buzzer}, dotPin_{dotPin}, dashPin_{dashPin}, ledPin_{ledPin}, buzzerGenPin_{buzzerGenPin},
               uart_{outputUart}
